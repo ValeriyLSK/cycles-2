@@ -6,18 +6,13 @@ public class StatsService {
         for (int sale : sales) {
             sum += sale;
         }
-        System.out.println("Сумма продаж: " + sum);
+//        System.out.println("Сумма продаж: " + sum);
         return sum;
     }
 
     public int calculateAverage(int[] sales) {
-        int average = 0;
-        int sum = 0;
-        for (int sale : sales) {
-            sum += sale;
-            average = sum / 12;
-        }
-        System.out.println("Средняя сумма продаж: " + average);
+        int average = calculateSum(sales) / sales.length;
+//        System.out.println("Средние продажи:" + average);
         return average;
     }
 
@@ -30,7 +25,7 @@ public class StatsService {
             }
             month = month + 1;
         }
-        System.out.println("Последний месяц с максимальными продажами: " + (maxMonth + 1));
+//        System.out.println("Последний месяц с максимальными продажами: " + (maxMonth + 1));
         return maxMonth + 1;
     }
 
@@ -43,42 +38,32 @@ public class StatsService {
             }
             month = month + 1;
         }
-        System.out.println("Последний месяц с минимальными продажами: " + (minMonth + 1));
+//        System.out.println("Последний месяц с минимальными продажами: " + (minMonth + 1));
         return minMonth + 1;
     }
 
 
     public int calculateMonthBelowAverage(int[] sales) {
-        int average = 0;
-        int sum = 0;
         int count = 0;
-        for (int sale : sales) {
-            sum += sale;
-            average = sum / 12;
-        }
+        int average = calculateAverage(sales);
         for (int i : sales) {
             if (i < average) {
                 count++;
             }
         }
-        System.out.println("Количество месяцев с продажами ниже среднего: " + count);
+//        System.out.println("Количество месяцев с продажами ниже среднего: " + count);
         return count;
     }
 
     public int calculateMonthAboveAverage(int[] sales) {
-        int average = 0;
-        int sum = 0;
         int count = 0;
-        for (int sale : sales) {
-            sum += sale;
-            average = sum / 12;
-        }
+        int average = calculateAverage(sales);
         for (int i : sales) {
             if (i > average) {
                 count++;
             }
         }
-        System.out.println("Количество месяцев с продажами выше среднего: " + count);
+//        System.out.println("Количество месяцев с продажами выше среднего: " + count);
         return count;
     }
 }
